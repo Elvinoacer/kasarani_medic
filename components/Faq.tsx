@@ -36,25 +36,38 @@ export function Faq() {
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${i}`}
                   className="flex w-full items-center justify-between gap-4 px-5 py-4.5 text-left sm:px-6"
                 >
-                  <span>
+                  <span className="min-w-0">
                     <span className="block font-display text-[1.05rem] font-semibold text-pine-950">
                       {f.q}
                     </span>
                     <span className="mt-0.5 block text-xs italic text-pine-600">{f.qSw}</span>
                   </span>
+
                   <span
-                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-400 ${
+                    aria-hidden="true"
+                    className={`relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
                       isOpen
-                        ? "rotate-180 bg-pine-700 text-cream-50"
+                        ? "bg-pine-700 text-cream-50"
                         : "bg-cream-100 text-pine-700"
                     }`}
                   >
-                    <Icon name="chevron-down" className="h-4.5 w-4.5" />
+                    <Icon
+                      name="chevron-down"
+                      className={`h-4.5 w-4.5 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
                   </span>
                 </button>
-                <div className="acc-panel" data-open={isOpen}>
+
+                <div
+                  id={`faq-panel-${i}`}
+                  className="acc-panel"
+                  data-open={isOpen}
+                >
                   <div>
                     <p className="px-5 pb-5 text-[0.9rem] leading-relaxed text-ink-700 sm:px-6">
                       {f.a}
