@@ -25,12 +25,11 @@ export function Faq() {
             return (
               <div
                 key={f.q}
-                className={`reveal overflow-hidden rounded-[1.4rem] border-2 transition-colors duration-300 ${
+                className={`overflow-hidden rounded-[1.4rem] border-2 transition-colors duration-300 ${
                   isOpen
                     ? "border-pine-200 bg-white shadow-lift"
                     : "border-cream-200 bg-white/60 hover:border-pine-100"
                 }`}
-                style={{ ["--reveal-delay" as string]: `${i * 50}ms` }}
               >
                 <button
                   type="button"
